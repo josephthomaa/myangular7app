@@ -1,3 +1,46 @@
-<p>
-  register works!
-</p>
+<div id="theForm" class="container">
+  <div class="jumbotron">
+  <h2>Create a new account</h2>
+</div>
+  <form #f="ngForm" name="theForm" (submit)="newRegister(f)"  style="padding: 0px 50% 0px 10px;">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="regData.name" #regDataName="ngModel" required pattern="^[a-zA-Z]+$">
+      <span class="help-block danger" *ngIf="regDataName.errors?.required && regDataName.touched">
+        The name is required
+      </span>
+      <span class="help-block danger" *ngIf="regDataName.errors?.pattern && regDataName.touched" >
+        The name can only contain the letters a-z or A-Z
+      </span>
+    </div>
+    <div class="form-group">
+      <label>User name</label>
+      <input type="text" class="form-control" name="uname" [(ngModel)]="regData.uname" #regDatauName="ngModel" required pattern="^[a-zA-Z]+$">
+      <span class="help-block danger" *ngIf="regDatauName.errors?.required && regDatauName.touched">
+        The user name is required
+      </span>
+      <span class="help-block danger" *ngIf="regDatauName.errors?.pattern && regDatauName.touched" >
+        The user name can only contain the letters a-z or A-Z
+      </span>
+    </div>
+    <div class="form-group">
+      <label>Mobile</label>
+      <input type="text" class="form-control" name="mobile" required [(ngModel)]="regData.mobile" #regDataMobile="ngModel">
+      <span class="help-block danger" *ngIf="regDataMobile.errors?.required && regDataMobile.touched">
+        The mobile number is required
+      </span>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="form-control" name="version" required [(ngModel)]="regData.version" #regDataPwd="ngModel">
+      <span class="help-block danger" *ngIf="regDataPwd.errors?.required && regDataPwd.touched">
+        The price is required
+      </span>
+    </div>
+    <div *ngIf="error">{{error}}</div>
+    <div *ngIf="success">{{success}}</div>
+    <button
+        class="btn btn-primary btn-sm"
+        [disabled]="f.invalid">Register</button>
+  </form>
+</div>

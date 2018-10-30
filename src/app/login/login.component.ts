@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MyappService } from '../app/myapp.service';
-import { Login } from '../app/login';
+import { Login } from '../app/loginRegister';
 
 @Component({
   selector: 'app-login',
@@ -34,10 +34,6 @@ export class LoginComponent implements OnInit {
             window.location.href = '/';
             this.success = 'Created successfully';
            }
-          // Inform the user
-                
-          // Reset the form
-         // f.reset();
         },
         (err) => this.error = err
       );

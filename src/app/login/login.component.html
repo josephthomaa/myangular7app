@@ -1,5 +1,7 @@
 <div class="container">
+    <div class="jumbotron">
   <h2>Login</h2>
+  </div>
   <form  #f="ngForm" name="theForm" (submit)="checkLogin(f)" >
     <div class="form-group">
       <label>Username:</label>
@@ -15,11 +17,13 @@
         The password is required
       </span>
     </div>
-    
+    <div class="form-group">
+        <div class="errorMsg" *ngIf="error">{{error}}</div>
+        <div *ngIf="success">{{success}}</div>
+      Click <a routerLink="/register" class="navbar-brand">here</a>to create new account.
+    </div>
     <button
     class="btn btn-primary btn-sm"
     [disabled]="f.invalid">Login</button>
   </form>
 </div>
-<div *ngIf="error">{{error}}</div>
-<div *ngIf="success">{{success}}</div>
