@@ -1,3 +1,25 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <h2>Login</h2>
+  <form  #f="ngForm" name="theForm" (submit)="checkLogin(f)" >
+    <div class="form-group">
+      <label>Username:</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="loginData.name" #loginName="ngModel" required pattern="^[a-zA-Z]+$">
+      <span class="help-block danger" *ngIf="loginName.errors?.required && loginName.touched">
+        The name is required
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" name="password" required [(ngModel)]="loginData.password" #loginPwd="ngModel">
+      <span class="help-block danger" *ngIf="loginPwd.errors?.required && loginPwd.touched">
+        The password is required
+      </span>
+    </div>
+    
+    <button
+    class="btn btn-primary btn-sm"
+    [disabled]="f.invalid">Login</button>
+  </form>
+</div>
+<div *ngIf="error">{{error}}</div>
+<div *ngIf="success">{{success}}</div>
