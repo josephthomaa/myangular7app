@@ -5,7 +5,7 @@
   <form #f="ngForm" name="theForm" (submit)="newRegister(f)"  style="padding: 0px 50% 0px 10px;">
     <div class="form-group">
       <label>Name</label>
-      <input type="text" class="form-control" name="name" [(ngModel)]="regData.name" #regDataName="ngModel" required pattern="^[a-zA-Z]+$">
+      <input type="text" class="form-control" name="name" [(ngModel)]="regData.name" #regDataName="ngModel" required pattern="^[a-zA-Z ]+$">
       <span class="help-block danger" *ngIf="regDataName.errors?.required && regDataName.touched">
         The name is required
       </span>
@@ -32,7 +32,7 @@
     </div>
     <div class="form-group">
       <label>Password</label>
-      <input type="password" class="form-control" name="version" required [(ngModel)]="regData.version" #regDataPwd="ngModel">
+      <input type="password" class="form-control" name="password" required [(ngModel)]="regData.password" #regDataPwd="ngModel">
       <span class="help-block danger" *ngIf="regDataPwd.errors?.required && regDataPwd.touched">
         The price is required
       </span>
