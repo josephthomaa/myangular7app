@@ -26,8 +26,7 @@ export class MyappService {
 newRegistration(regData: Register): Observable<Register[]> {
   return this.http.post(`${this.baseUrl}/registration`, { data: regData })
     .pipe(map((res) => {
-      this.register.push(res['data']);
-      return this.register;
+      return res['data'];
     }),
     catchError(this.handleError));
 }

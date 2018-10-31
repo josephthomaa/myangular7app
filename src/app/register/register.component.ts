@@ -25,13 +25,14 @@ export class RegisterComponent implements OnInit {
     this.myappservice.newRegistration(this.regData)
       .subscribe(
         (res: Register[]) => {
-          // Update the list of cars
-          this.register = res;
-
-          // Inform the user
-          this.success = 'Created successfully';
-
-          // Reset the form
+          if(res['status']===0){
+            this.error = 'Registration Failed';  
+           }
+           else{ 
+              this.success = 'Registered successfully, please login to continue...';
+              f.reset();
+           }
+         // Reset the form
          
         },
         (err) => this.error = err
