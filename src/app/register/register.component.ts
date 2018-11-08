@@ -28,6 +28,9 @@ export class RegisterComponent implements OnInit {
           if(res['status']===0){
             this.error = 'Registration Failed';  
            }
+           else if(res['status']===-1){
+            this.error = 'Entered user details already exists';  
+           }
            else{ 
               this.success = 'Registered successfully, please login to continue...';
               f.reset();
