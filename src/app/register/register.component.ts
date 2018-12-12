@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MyappService } from '../app/myapp.service';
-import { Register } from '../app/loginRegister';
-
+import { MycardserviceService } from '../services/mycardservice.service';
+import { Register } from '../services/mycard';
 
 @Component({
   selector: 'app-register',
@@ -12,17 +11,17 @@ export class RegisterComponent implements OnInit {
   register: Register[];
   error = '';
   success = '';
-  constructor(private myappservice:MyappService) { }
+  constructor(private MycardserviceService:MycardserviceService) { }
 
   ngOnInit() {
   }
   regData= new Register('','','','');
-    //Create new language
-    newRegister(f) {
+   //Create new user
+   newRegister(f) {
     this.error = '';
     this.success = '';
 
-    this.myappservice.newRegistration(this.regData)
+    this.MycardserviceService.newRegistration(this.regData)
       .subscribe(
         (res: Register[]) => {
           if(res['status']===0){
@@ -41,4 +40,5 @@ export class RegisterComponent implements OnInit {
         (err) => this.error = err
       );
 }
+
 }

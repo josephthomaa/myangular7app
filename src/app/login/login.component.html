@@ -1,29 +1,34 @@
-<div class="container">
-    <div class="jumbotron">
-  <h2>Login</h2>
-  </div>
-  <form  #f="ngForm" name="theForm" (submit)="checkLogin(f)" >
-    <div class="form-group">
-      <label>Username:</label>
-      <input type="text" class="form-control" name="name" [(ngModel)]="loginData.name" #loginName="ngModel" required pattern="^[a-zA-Z]+$">
-      <span class="help-block danger" *ngIf="loginName.errors?.required && loginName.touched">
-        The name is required
-      </span>
-    </div>
-    <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" name="password" required [(ngModel)]="loginData.password" #loginPwd="ngModel">
-      <span class="help-block danger" *ngIf="loginPwd.errors?.required && loginPwd.touched">
-        The password is required
-      </span>
-    </div>
-    <div class="form-group">
+<div class="jumbotron">
+  <div class="container loginform">
+    <h2>Mycard Login</h2>
+    <form  #f="ngForm" name="theForm" (submit)="checkLogin(f)" >
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" [(ngModel)]="loginData.email" #loginEmail="ngModel" >
+        
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" required [(ngModel)]="loginData.pwd" #loginPwd="ngModel">
+        <span class="help-block danger" *ngIf="loginPwd.errors?.required && loginPwd.touched">
+          The password is required
+        </span>
+      </div>
+      <div class="form-group">
         <div class="errorMsg" *ngIf="error">{{error}}</div>
         <div *ngIf="success">{{success}}</div>
-      Click <a routerLink="/register" class="navbar-brand">here</a>to create new account.
+      
     </div>
-    <button
-    class="btn btn-primary btn-sm"
-    [disabled]="f.invalid">Login</button>
-  </form>
+      <!--<div class="checkbox">
+        <label><input type="checkbox" name="remember"> Remember me</label>
+      </div>-->
+      <button
+      class="btn btn-primary btn-sm"
+      [disabled]="f.invalid">Login</button>
+      <div class="form-group">
+      <p> Click <a routerLink="/register" class="btn btn-link">here</a>to create new account.</p>
+      </div>
+    </form>
+   
+  </div>
 </div>

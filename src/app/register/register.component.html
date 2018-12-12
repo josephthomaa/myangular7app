@@ -1,46 +1,57 @@
-<div id="theForm" class="container">
-  <div class="jumbotron">
-  <h2>Create a new account</h2>
-</div>
-  <form #f="ngForm" name="theForm" (submit)="newRegister(f)"  style="padding: 0px 50% 0px 10px;">
-    <div class="form-group">
-      <label>Name</label>
-      <input type="text" class="form-control" name="name" [(ngModel)]="regData.name" #regDataName="ngModel" required pattern="^[a-zA-Z ]+$">
-      <span class="help-block danger" *ngIf="regDataName.errors?.required && regDataName.touched">
-        The name is required
-      </span>
-      <span class="help-block danger" *ngIf="regDataName.errors?.pattern && regDataName.touched" >
-        The name can only contain the letters a-z or A-Z
-      </span>
-    </div>
-    <div class="form-group">
-      <label>User name</label>
-      <input type="text" class="form-control" name="uname" [(ngModel)]="regData.uname" #regDatauName="ngModel" required pattern="^[a-zA-Z]+$">
-      <span class="help-block danger" *ngIf="regDatauName.errors?.required && regDatauName.touched">
-        The user name is required
-      </span>
-      <span class="help-block danger" *ngIf="regDatauName.errors?.pattern && regDatauName.touched" >
-        The user name can only contain the letters a-z or A-Z
-      </span>
-    </div>
-    <div class="form-group">
-      <label>Mobile</label>
-      <input type="text" class="form-control" name="mobile" required [(ngModel)]="regData.mobile" #regDataMobile="ngModel">
-      <span class="help-block danger" *ngIf="regDataMobile.errors?.required && regDataMobile.touched">
-        The mobile number is required
-      </span>
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" class="form-control" name="password" required [(ngModel)]="regData.password" #regDataPwd="ngModel">
-      <span class="help-block danger" *ngIf="regDataPwd.errors?.required && regDataPwd.touched">
-        The price is required
-      </span>
-    </div>
-    <div *ngIf="error">{{error}}</div>
-    <div *ngIf="success">{{success}}</div>
-    <button
+<div class="jumbotron">
+  <div class="container regform">
+    
+    <form #f="ngForm" name="theForm" (submit)="newRegister(f)"  style="padding: 0px 20%;">
+      <h2>Mycard Signup</h2>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" [(ngModel)]="regData.name" #regDataName="ngModel" required pattern="^[a-zA-Z ]+$">
+        <span class="help-block danger" *ngIf="regDataName.errors?.required && regDataName.touched">
+          The name is required
+        </span>
+        <span class="help-block danger" *ngIf="regDataName.errors?.pattern && regDataName.touched" >
+          The name can only contain the letters a-z or A-Z
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone no:</label>
+        <input type="number" class="form-control" id="phone" placeholder="Enter phone number" name="phone" required [(ngModel)]="regData.phone" #regDataPhone="ngModel">
+        <span class="help-block danger" *ngIf="regDataPhone.errors?.required && regDataPhone.touched">
+          The mobile number is required
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required [(ngModel)]="regData.email" #regDataEmail="ngModel">
+        <span class="help-block danger" *ngIf="regDataEmail.errors?.required && regDataEmail.touched">
+          The email is required
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" required [(ngModel)]="regData.pwd" #regDataPwd="ngModel">
+        <span class="help-block danger" *ngIf="regDataPwd.errors?.required && regDataPwd.touched">
+          The password is required
+        </span>
+      </div>
+    
+      <div class="form-group">
+        <label for="cpwd">Confirm Password:</label>
+        <input type="password" class="form-control" id="cpwd" placeholder="Enter password" name="cpwd" required [(ngModel)]="regData.cpwd" #regDataCpwd="ngModel">
+        <span class="help-block danger" *ngIf="regDataCpwd.errors?.required && regDataCpwd.touched">
+          The confirm password is required
+        </span>
+      </div>
+      <!--<div class="checkbox">
+        <label><input type="checkbox" name="remember"> Remember me</label>
+      </div>-->
+      <div *ngIf="error">{{error}}</div>
+      <div *ngIf="success">{{success}}</div>
+      <button
         class="btn btn-primary btn-sm"
         [disabled]="f.invalid">Register</button>
-  </form>
+      <p><a routerLink="/login" class="btn btn-link">Login</a></p>
+    </form>
+    
+  </div>
 </div>

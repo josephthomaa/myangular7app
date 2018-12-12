@@ -1,4 +1,9 @@
-.errorMsg{
-    color: red;
-    font-size: 14px;
+.loginform{
+    padding: 10%;
+}
+.bgimg {  
+    background-image: url('../../assets/1.jpg');  
+    min-height: 100%;  
+    background-position: center;  
+    background-size: cover;  
 }

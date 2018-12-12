@@ -1,30 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { MycardserviceService } from '../services/mycardservice.service';
-import { Login } from '../services/mycard';
+import { Myprofile } from '../services/mycard';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-myprofile',
+  templateUrl: './myprofile.component.html',
+  styleUrls: ['./myprofile.component.css']
 })
-export class LoginComponent implements OnInit {
-  login: Login[];
+export class MyprofileComponent implements OnInit {
+  myprofile: Myprofile[];
   error = '';
   success = '';
   constructor(private MycardserviceService:MycardserviceService) { }
 
   ngOnInit() {
   }
-  loginData= new Login('','');
-  checkLogin(f) {
+  profData= new Myprofile('','','','','','','','','');
+  saveProfile(f) {
     this.error = '';
     this.success = '';
 
-    this.MycardserviceService.loginCheck(this.loginData)
+    this.MycardserviceService.saveUserData(this.profData)
       .subscribe(
-        (res: Login[]) => {
+        (res: Myprofile[]) => {
           // Update the list of cars
-          this.login = res;
+          this.myprofile = res;
            if(res['name']===0){
             this.error = 'Login Failed';  
            }
@@ -36,5 +36,4 @@ export class LoginComponent implements OnInit {
         (err) => this.error = err
       );
 }
-
 }

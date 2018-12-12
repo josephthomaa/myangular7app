@@ -6,15 +6,17 @@ if(isset($postdata) && !empty($postdata))
 {
    // Extract the data.
   $request = json_decode($postdata);
-  if(trim($request->data->name) === '' || (int)$request->data->password === '')
+  
+  if(trim($request->data->email) === '' || $request->data->pwd === '')
   {
     return http_response_code(400);
   }
-	$name = mysqli_real_escape_string($con, trim($request->data->name));
-  $password = mysqli_real_escape_string($con, $request->data->password);
+  
+	$email = mysqli_real_escape_string($con, $request->data->email);
+  $password = mysqli_real_escape_string($con, $request->data->pwd);
       
   $response = [];
-  $sql = "SELECT `id` FROM `login` WHERE `username`='$name' and `userpwd`='$password'";
+  $sql = "SELECT `id` FROM `tbuser` WHERE `uemail`='$email' and `upwd`='$password'";
  
   if($result = mysqli_query($con,$sql))
   {
@@ -36,6 +38,6 @@ if(isset($postdata) && !empty($postdata))
  else
   {
    
-    http_response_code(404);
+    http_response_code(400);
   }
 }

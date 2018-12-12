@@ -1,0 +1,12 @@
+.form-group > input{
+    border-radius: 1px;
+    height: 34px;
+    border: none;
+}
+.btn-save{
+    margin-left:175px;
+}
+.help-block{
+    margin-left: 17%;
+    color: brown !important;
+}

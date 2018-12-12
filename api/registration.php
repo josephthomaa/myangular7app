@@ -7,23 +7,24 @@ $postdata = file_get_contents("php://input");
 if(isset($postdata) && !empty($postdata))
 {
   // Extract the data.
+ 
   $request = json_decode($postdata);
- // print_r($request);die;
+
 
   // Validate.
-  if(trim($request->data->name) === '' || (int)$request->data->password === '')
+  if(trim($request->data->name) === '' || (int)$request->data->pwd === '')
   {
     return http_response_code(400);
   }
 	
   // Sanitize.
   $name = mysqli_real_escape_string($con, trim($request->data->name));
-  $uname = mysqli_real_escape_string($con, $request->data->uname);
-  $mobile= mysqli_real_escape_string($con, (int)$request->data->mobile);
-  $pwd= mysqli_real_escape_string($con, $request->data->password); 
+  $email = mysqli_real_escape_string($con, $request->data->email);
+  $mobile= mysqli_real_escape_string($con, (int)$request->data->phone);
+  $pwd= mysqli_real_escape_string($con, $request->data->pwd); 
 
 
-  $sqlStr = "SELECT username FROM `login` where `username`='$uname'";
+  $sqlStr = "SELECT uemail FROM `tbuser` where `uemail`='$email'";
    
   if ($result = mysqli_query($con,$sqlStr)){
      $rowcount = mysqli_num_rows($result);
@@ -32,14 +33,16 @@ if(isset($postdata) && !empty($postdata))
   }
   if($rowcount==0){
   // Store.
-  $sql = "INSERT INTO `login`(`username`,`userpwd`,`name`,`mobile`) VALUES ('{$uname}','{$pwd}','{$name}','{$mobile}')";
+  $a=rand(9,99);
+	$Cuid=$a.uniqid();
+  $sql = "INSERT INTO `tbuser`(`cid`, `uname`, `upwd`, `uphone`, `uemail`, `ulink`) VALUES ('{$Cuid}','{$name}','{$pwd}','{$mobile}','{$email}','')";
  
   if(mysqli_query($con,$sql))
   {
     http_response_code(201);
     $response = [
       'status' => 1,
-      'uname' => $uname
+      'uname' => $name
     ];
     echo json_encode(['data'=>$response]);
   }
