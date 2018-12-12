@@ -31,7 +31,7 @@ export class MycardserviceService {
       catchError(this.handleError));
     }
   saveUserData(profData: Myprofile): Observable<Myprofile[]> {
-      return this.http.post(`${this.baseUrl}/registration.php`, { data: profData })
+      return this.http.post(`${this.baseUrl}/saveprofile.php`, { data: profData })
         .pipe(map((res) => {
           return res['data'];
         }),
