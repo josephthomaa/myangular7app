@@ -37,6 +37,14 @@ export class MycardserviceService {
         }),
         catchError(this.handleError));
       }
+      getAll(n): Observable<Myprofile[]> {
+        return this.http.get(`${this.baseUrl}/getprofile.php?id=`+n).pipe(
+          map((res) => {
+            this.myprofile = res['data'];
+            return this.myprofile;
+        }),
+      catchError(this.handleError));
+      }    
   private handleError(error: HttpErrorResponse) {
     console.log(error);
    

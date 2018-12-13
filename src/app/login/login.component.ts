@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
             this.error = 'Login Failed';  
            }
            else{ 
-            window.location.href = '/profile';
+            window.location.href = '/profile/'+res['name'];
             this.success = 'Created successfully';
            }
         },

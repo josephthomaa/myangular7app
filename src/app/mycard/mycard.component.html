@@ -1,3 +1,83 @@
-<p>
-  mycard works!
-</p>
+<div class="modal-dialog">
+  <div class="w3-container">
+    <div class="w3-card-4" style="width:100%">
+      <header class="w3-container w3-border-bottom w3-light-grey">
+      <h4> {{profData.fname}} {{profData.lname}}
+      <img src="https://img.icons8.com/ios/1600/bank-card-back-side.png" alt="" class="w3-right w3-square " style="width:70px">
+      </h4><br>
+      </header>
+        <div class="w3-container w3-white w3-center">
+          <br>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV0I6VDKQ3vmT9y2QFvx7UZ4aTK_HZUbbHyIvmr_sgoa3sIBB6cg" alt="" class="w3-justify w3-circle" style="width:88px;height:88px;">
+          
+          <h5 class='title'>{{profData.occupation}}</h5>
+          
+       
+          <h6> simelabs</h6>
+         
+          <h6>{{profData.address}}</h6>
+          
+           <h6 class='title2'>
+            This is a test.
+            </h6>
+            <br>
+        </div>
+
+    </div>
+  </div>
+  
+  <div class="w3-container">
+    <div class="w3-card-4 w3-white" style="width:100%">
+      <div class="w3-container w3-center">
+      <br>
+        <h4>Contact</h4>
+          <div class="list-group">
+         
+            <div id="Email">
+              <a href="mailto:josephthomaa@gmail.com" class="list-group-item">
+              <h6 class="list-group-item-heading">Email</h6>
+              <p class="list-group-text">{{profData.email}}</p>
+              </a>
+            </div>
+            <div id="mobile">
+              <a href="tel:9746123742" class="list-group-item">
+              <h6 class="list-group-item-heading">Mobile</h6>
+              <p class="list-group-item-text">{{profData.phone}}</p>
+              </a>
+            </div>
+            <div id="website">
+              <a href="simelabs.com" class="list-group-item">
+              <h6 class="list-group-item-heading">Website</h6>
+              <p class="list-group-item-text">simelabs.com</p>
+              </a>
+            </div>
+            <div id="chat">
+              <a href="sms:9746123742" class="list-group-item">
+              <h6 class="list-group-item-heading">Chat </h6>
+              <p class="list-group-item-text">9746123742</p>
+              </a>
+            </div>
+         
+           
+        
+          </div>
+
+   
+<footer >
+<div class="w3-container  w3-center">
+<div class="w3-bar ">
+ <!--<a href="" id="fbook"><button class="w3-bar-item w3-btn w3-border w3-tiny"><i class="fa fa-facebook" ></i></button></a>
+	<a href=""><button class="w3-bar-item w3-btn w3-border w3-tiny"><i class="fa fa-google-plus" ></i></button></a>-->
+  <a href=""><button class="w3-bar-item w3-btn w3-border w3-tiny"><i class="fa fa-linkedin" ></i></button></a>
+  <a href="skype:{{profData.skype}}?call"><button class="w3-bar-item w3-btn w3-border w3-tiny"><i class="fa fa-skype "></i></button></a>
+  <a href="https://api.whatsapp.com/send?phone={{profData.whatsapp}}"><button class="w3-bar-item w3-btn w3-border w3-tiny"><i class="fa fa-whatsapp"></i></button></a>
+  <a href="sms:{{profData.whatsapp}}"><button class="w3-bar-item w3-btn w3-border w3-tiny"><i class="fa fa-paper-plane"></i></button></a>
+  </div>
+  </div>
+</footer>
+<br>
+
+    </div>
+  </div>
+</div>
+</div> 

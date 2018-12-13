@@ -20,5 +20,8 @@ export class Login {
       email:string,
       whatsapp:string,
       skype:string,
-      intro: string) {}
+      imageurl:string,
+      intro: string) {
+        
+      }
   }

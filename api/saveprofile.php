@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require 'connect.php';
 
 // Get the posted data.
@@ -10,17 +11,23 @@ if(isset($postdata) && !empty($postdata))
   // Extract the data.
  
   $request = json_decode($postdata);
-  print_r($request);die;
+  //print_r($request);die;
 
 
   // Sanitize.
-  $name = mysqli_real_escape_string($con, trim($request->data->name));
-  $email = mysqli_real_escape_string($con, $request->data->email);
-  $mobile= mysqli_real_escape_string($con, (int)$request->data->phone);
-  $pwd= mysqli_real_escape_string($con, $request->data->pwd); 
+  $fname = mysqli_real_escape_string($con, trim($request->data->fname));
+  $lname = mysqli_real_escape_string($con, $request->data->lname);
+  $address= mysqli_real_escape_string($con, $request->data->address);
+  $occupation= mysqli_real_escape_string($con, $request->data->occupation); 
+  $email= mysqli_real_escape_string($con, $request->data->email); 
+  $id= mysqli_real_escape_string($con, $request->data->id); 
+  $phone= mysqli_real_escape_string($con, $request->data->phone); 
+  $whatsapp= mysqli_real_escape_string($con, $request->data->whatsapp); 
+  $skype= mysqli_real_escape_string($con, $request->data->skype); 
+  $imageurl= mysqli_real_escape_string($con, $request->data->imageurl); 
+  $comment= mysqli_real_escape_string($con, $request->data->comment); 
 
-
-  $sqlStr = "SELECT uemail FROM `tbuser` where `uemail`='$email'";
+  $sqlStr = "SELECT cid FROM `tblprofile` where `cid`='$id'";
    
   if ($result = mysqli_query($con,$sqlStr)){
      $rowcount = mysqli_num_rows($result);
@@ -31,14 +38,14 @@ if(isset($postdata) && !empty($postdata))
   // Store.
   $a=rand(9,99);
 	$Cuid=$a.uniqid();
-  $sql = "INSERT INTO `tbuser`(`cid`, `uname`, `upwd`, `uphone`, `uemail`, `ulink`) VALUES ('{$Cuid}','{$name}','{$pwd}','{$mobile}','{$email}','')";
+  $sql = "INSERT INTO `tblprofile`(`id`, `cid`, `fname`, `lname`, `address`, `occupation`, `phone`, `email`, `whatsapp`, `skype`, `imageurl`, `intro`) VALUES ('','{$id}','{$fname}','{$lname}','{$address}','{$occupation}','{$phone}','{$email}','{$whatsapp}','{$skype}','{$imageurl}','{$comment}')";
  
   if(mysqli_query($con,$sql))
   {
     http_response_code(201);
     $response = [
       'status' => 1,
-      'uname' => $name
+      'uname' => $fname
     ];
     echo json_encode(['data'=>$response]);
   }
